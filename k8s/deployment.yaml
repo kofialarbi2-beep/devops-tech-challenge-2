@@ -1,0 +1,42 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tech2-flask-app
+  labels:
+    app: tech2-flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tech2-flask
+  template:
+    metadata:
+      labels:
+        app: tech2-flask
+    spec:
+      containers:
+        - name: flask
+          image: 418043655481.dkr.ecr.us-east-1.amazonaws.com/tech2-flask-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 15
+            periodSeconds: 20
