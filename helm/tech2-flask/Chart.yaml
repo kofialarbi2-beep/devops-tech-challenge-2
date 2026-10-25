@@ -1,0 +1,7 @@
+
+apiVersion: v2
+name: tech2-flask
+description: Flask application deployed to AWS EKS
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

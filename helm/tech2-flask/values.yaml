@@ -1,0 +1,31 @@
+
+replicaCount: 1
+
+image:
+  repository: 418043655481.dkr.ecr.us-east-1.amazonaws.com/tech2-flask-app
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5000
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 12
+  targetCPUUtilizationPercentage: 50
+  targetMemoryUtilizationPercentage: 50
+
+ingress:
+  enabled: true
+
