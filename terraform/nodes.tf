@@ -73,9 +73,9 @@ resource "aws_eks_node_group" "tech2_nodes" {
   capacity_type  = "ON_DEMAND"
 
   scaling_config {
-    desired_size = 1
-    min_size     = 1
-    max_size     = 4
+    desired_size = 2
+    min_size     = 2
+    max_size     = 3
   }
 
   update_config {
