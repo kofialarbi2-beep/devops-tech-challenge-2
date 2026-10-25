@@ -1,9 +1,8 @@
-
 replicaCount: 1
 
 image:
   repository: 418043655481.dkr.ecr.us-east-1.amazonaws.com/tech2-flask-app
-  tag: latest
+  tag: "3"
   pullPolicy: Always
 
 service:
@@ -28,4 +27,3 @@ autoscaling:
 
 ingress:
   enabled: true
-
